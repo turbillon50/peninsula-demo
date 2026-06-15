@@ -1,26 +1,79 @@
-@import "tailwindcss";
+
+/* DESIGN SYSTEM VULCANO — PURIFICADORA PENÍNSULA */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base obsidiana */
+  --void:    #020a05;
+  --bg:      #060f08;
+  --surface: #0d1f10;
+  --card:    #112516;
+  --border:  #1e3d24;
+  /* Texto nacarado */
+  --txt:     #f0f8f0;
+  --txt2:    #a8c4ac;
+  --txt3:    #4a6b4e;
+  /* Acento agua — del logo */
+  --blue:    #1E6FAE;
+  --blue2:   #1557891;
+  --green:   #3A8C3F;
+  --green2:  #2d6e32;
+  --cyan:    #22d3ee;
+  --gold:    #fbbf24;
+  --red:     #f87171;
+  /* Layout */
+  --nav-h:   100px;
+  --tab-h:   56px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="light"] {
+  --void:    #f0f7f0;
+  --bg:      #ffffff;
+  --surface: #f5faf5;
+  --card:    #ffffff;
+  --border:  #d0e8d2;
+  --txt:     #0a1f0c;
+  --txt2:    #3a5c3e;
+  --txt3:    #7a9e7e;
+  --blue:    #155a8a;
+  --green:   #2d6e32;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html { background: var(--void); }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg) !important;
+  color: var(--txt) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
+
+.page-main {
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 8px);
+  padding-bottom: calc(var(--tab-h) + env(safe-area-inset-bottom, 0px) + 8px);
+  min-height: 100dvh;
+}
+.page-app {
+  padding-top: calc(52px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(var(--tab-h) + env(safe-area-inset-bottom, 0px) + 8px);
+  min-height: 100dvh;
+}
+.page-bare { min-height: 100dvh; }
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 1px; }
+
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(30,111,174,.45); }
+  50%      { box-shadow: 0 0 0 10px rgba(30,111,174,0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -300px 0; }
+  100% { background-position:  300px 0; }
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+@keyframes riseIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+[data-theme="light"] header { background: rgba(255,255,255,.97) !important; }
+[data-theme="light"] nav { background: rgba(255,255,255,.97) !important; }
