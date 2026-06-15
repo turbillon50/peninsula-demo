@@ -1,6 +1,6 @@
 'use client'
 import { create } from 'zustand'
-interface CartItem { id:string; nombre:string; precio:number; qty:number }
+interface CartItem { id:string; nombre:string; precio:number; qty:number; img?:string }
 interface Store {
   carrito: CartItem[]
   addItem: (item:{id:string;nombre:string;precio:number}) => void
