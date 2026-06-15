@@ -2,11 +2,12 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { SVG } from './svg'
-import { motion } from 'framer-motion'
+import { motion, LayoutGroup } from 'framer-motion'
 
 type Mode = 'cliente'|'repartidor'|'admin'
+
 const TABS = {
-  cliente:    [
+  cliente: [
     {href:'/',icon:'home',label:'Inicio',exact:true},
     {href:'/pedidos',icon:'orders',label:'Pedidos'},
     {href:'/cuenta',icon:'user',label:'Cuenta'},
@@ -23,44 +24,64 @@ const TABS = {
     {href:'/admin/config',icon:'gear',label:'Config'},
   ],
 }
+
 export function BottomTab({ mode }: { mode: Mode }) {
   const pathname = usePathname()
   const tabs = TABS[mode]
-  const accent = mode==='admin'?'#1E6FAE':mode==='repartidor'?'#3A8C3F':'#1E6FAE'
+  const accent = '#1E6FAE'
 
   return (
-    <nav className="bottom-tab">
-      <div style={{height:'var(--tab-h)',display:'flex',alignItems:'center',padding:'0 8px'}}>
-        {tabs.map(tab => {
-          const active = tab.exact ? pathname===tab.href : pathname.startsWith(tab.href)
-          return (
-            <Link key={tab.href} href={tab.href} style={{
-              flex:1,display:'flex',flexDirection:'column',alignItems:'center',
-              justifyContent:'center',gap:4,textDecoration:'none',
-              color:active?accent:'var(--txt3)',transition:'all .2s',
-              position:'relative',padding:'6px 0',
-            }}>
-              {active && (
-                <motion.div layoutId="tab-pill"
-                  style={{position:'absolute',top:0,left:'15%',right:'15%',
-                    height:3,background:accent,borderRadius:2}}
-                  transition={{type:'spring',stiffness:400,damping:30}}/>
-              )}
-              <motion.div
-                animate={{scale:active?1.15:1,y:active?-1:0}}
-                transition={{type:'spring',stiffness:400,damping:25}}
-                style={{color:active?accent:'var(--txt3)'}}>
-                <span dangerouslySetInnerHTML={{__html:SVG[tab.icon]??''}}
+    <nav style={{
+      position:'fixed',bottom:0,left:0,right:0,zIndex:100,
+      height:'calc(60px + env(safe-area-inset-bottom,0px))',
+      paddingBottom:'env(safe-area-inset-bottom,0px)',
+      background:'rgba(6,15,8,.95)',
+      backdropFilter:'blur(24px)',
+      WebkitBackdropFilter:'blur(24px)',
+      borderTop:'1px solid rgba(30,111,174,.2)',
+    }}>
+      <LayoutGroup>
+        <div style={{height:60,display:'flex',alignItems:'stretch'}}>
+          {tabs.map(tab => {
+            const active = tab.exact ? pathname===tab.href : pathname.startsWith(tab.href)
+            return (
+              <Link key={tab.href} href={tab.href} style={{
+                flex:1,display:'flex',flexDirection:'column',
+                alignItems:'center',justifyContent:'center',gap:4,
+                textDecoration:'none',position:'relative',
+                color: active ? accent : 'var(--txt3)',
+              }}>
+                {active && (
+                  <motion.div layoutId="tab-indicator"
+                    style={{
+                      position:'absolute',top:0,
+                      left:'20%',right:'20%',height:2.5,
+                      background:'linear-gradient(90deg,#1E6FAE,#22d3ee)',
+                      borderRadius:2,
+                    }}
+                    transition={{type:'spring',stiffness:380,damping:30}}/>
+                )}
+                <motion.span
+                  animate={{
+                    scale: active ? 1.18 : 1,
+                    y: active ? -1 : 0,
+                    color: active ? accent : 'var(--txt3)',
+                  }}
+                  transition={{type:'spring',stiffness:400,damping:25}}
+                  dangerouslySetInnerHTML={{__html:SVG[tab.icon]??''}}
                   style={{display:'flex'}}/>
-              </motion.div>
-              <span style={{fontSize:10,fontWeight:active?700:400,
-                color:active?accent:'var(--txt3)',letterSpacing:active?'.01em':0}}>
-                {tab.label}
-              </span>
-            </Link>
-          )
-        })}
-      </div>
+                <span style={{
+                  fontSize:10,fontWeight:active?700:400,
+                  color:active?accent:'var(--txt3)',
+                  transition:'color .2s',
+                }}>
+                  {tab.label}
+                </span>
+              </Link>
+            )
+          })}
+        </div>
+      </LayoutGroup>
     </nav>
   )
 }
