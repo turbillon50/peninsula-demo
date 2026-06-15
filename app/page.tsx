@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
-import { PRODUCTOS } from '@/lib/data'
+import { PRODUCTOS, CATS } from '@/lib/data'
 import { ProductCard } from '@/components/product-card'
 import { Logo } from '@/components/logo'
 import { BottomTab } from '@/components/bottom-tab'
@@ -138,26 +138,29 @@ export default function HomePage() {
         ))}
       </section>
 
-      {/* CATEGORÍAS */}
+      {/* CATEGORÍAS con fotos Higgsfield — sin emojis */}
       <section style={{padding:'20px 14px 0'}}>
         <div style={{display:'flex',justifyContent:'space-between',marginBottom:12}}>
           <p style={{fontSize:17,fontWeight:800,color:'var(--txt)'}}>¿Qué necesitas?</p>
           <Link href="/catalogo" style={{fontSize:12,color:'var(--blue)',textDecoration:'none',fontWeight:600}}>Ver todo</Link>
         </div>
         <div style={{display:'flex',gap:10,overflowX:'auto',scrollbarWidth:'none',paddingBottom:4}}>
-          {[
-            {label:'Garrafón 20L',emoji:'💧',sub:'Desde $30',href:'/catalogo?cat=garafon'},
-            {label:'Pack familiar',emoji:'🏠',sub:'Desde $135',href:'/catalogo?cat=pack'},
-            {label:'Botella 1.5L',emoji:'🍶',sub:'Desde $12',href:'/catalogo?cat=botella'},
-            {label:'Dispensador',emoji:'🚰',sub:'Desde $350',href:'/catalogo?cat=accesorio'},
-          ].map(c=>(
+          {CATS.map(c=>(
             <Link key={c.label} href={c.href} style={{
-              flexShrink:0,width:100,background:'var(--card)',border:'1px solid var(--border)',
-              borderRadius:14,padding:'12px 10px',textDecoration:'none',textAlign:'center'
+              flexShrink:0,width:110,background:'var(--card)',border:'1px solid var(--border)',
+              borderRadius:14,overflow:'hidden',textDecoration:'none'
             }}>
-              <span style={{fontSize:28,display:'block',marginBottom:4}}>{c.emoji}</span>
-              <span style={{fontSize:11,fontWeight:700,color:'var(--txt)',display:'block',marginBottom:2}}>{c.label}</span>
-              <span style={{fontSize:10,color:'var(--blue)',fontWeight:600}}>{c.sub}</span>
+              {/* Imagen Higgsfield real */}
+              <div style={{height:70,overflow:'hidden',position:'relative'}}>
+                <img src={c.img} alt={c.label}
+                  style={{width:'100%',height:'100%',objectFit:'cover'}}/>
+                <div style={{position:'absolute',inset:0,
+                  background:'linear-gradient(to bottom,transparent 30%,rgba(6,15,8,.7) 100%)'}}/>
+              </div>
+              <div style={{padding:'8px 10px 10px'}}>
+                <span style={{fontSize:11,fontWeight:700,color:'var(--txt)',display:'block',marginBottom:2}}>{c.label}</span>
+                <span style={{fontSize:10,color:'var(--blue)',fontWeight:600}}>{c.sub}</span>
+              </div>
             </Link>
           ))}
         </div>

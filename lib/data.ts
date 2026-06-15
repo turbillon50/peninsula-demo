@@ -1,7 +1,7 @@
 
 export interface Producto {
   id: string; nombre: string; volumen: string; precio: number
-  descripcion: string; img: string; popular: boolean
+  descripcion: string; img: string; imgCat: string; popular: boolean
 }
 export interface Pedido {
   id: string; cliente: string; direccion: string; productos: string
@@ -19,20 +19,27 @@ export interface Repartidor {
 
 export const PRODUCTOS: Producto[] = [
   { id:'p1', nombre:'Garrafón 20L', volumen:'20 Litros', precio:30,
-    descripcion:'Agua purificada en proceso de osmosis inversa y UV. El clásico para casa y oficina.',
-    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_030916_97d100c1-1dd9-42c3-813a-f97243c7fb67.png', popular:true },
-  { id:'p2', nombre:'Garrafón 11L', volumen:'11 Litros', precio:20,
-    descripcion:'Tamaño compacto ideal para refrigerador o espacios pequeños.',
-    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_030916_97d100c1-1dd9-42c3-813a-f97243c7fb67.png', popular:false },
-  { id:'p3', nombre:'Agua en botella 1.5L', volumen:'1.5 Litros', precio:12,
-    descripcion:'Botella personal para llevar. Agua purificada con triple filtrado.',
-    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_030916_97d100c1-1dd9-42c3-813a-f97243c7fb67.png', popular:false },
-  { id:'p4', nombre:'Pack 5 garrafones 20L', volumen:'100 Litros', precio:135,
-    descripcion:'Pack semanal para familia o negocio. Ahorra $15 vs precio unitario.',
-    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_030916_97d100c1-1dd9-42c3-813a-f97243c7fb67.png', popular:true },
+    descripcion:'Agua purificada en proceso de osmosis inversa y UV. El clásico para casa y oficina. Refresca tu hogar con el mejor agua del suréste.',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034037_5335b72f-3f39-4b75-9757-6ab40e96a18a.png', imgCat:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034037_5335b72f-3f39-4b75-9757-6ab40e96a18a.png', popular:true },
+  { id:'p2', nombre:'Pack 5 Garrafones 20L', volumen:'100 Litros', precio:135,
+    descripcion:'Pack semanal para familia o negocio. Ahorra $15 vs precio unitario. Ideal para oficinas y casas con más de 4 personas.',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034037_e4700287-8921-4692-b9e0-9b778e20fe31.png', imgCat:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034037_e4700287-8921-4692-b9e0-9b778e20fe31.png', popular:true },
+  { id:'p3', nombre:'Botella personal 1.5L', volumen:'1.5 Litros', precio:12,
+    descripcion:'Botella personal para llevar. Agua purificada con triple filtrado. Perfecta para el gym, la oficina o el carro.',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034038_350f1382-22dc-4df3-b9be-2f8950d032aa.png', imgCat:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034038_350f1382-22dc-4df3-b9be-2f8950d032aa.png', popular:false },
+  { id:'p4', nombre:'Garrafón 11L', volumen:'11 Litros', precio:20,
+    descripcion:'Tamaño compacto ideal para refrigerador o espacios pequeños. Cabe en cualquier dispensador estándar.',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034037_5335b72f-3f39-4b75-9757-6ab40e96a18a.png', imgCat:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034037_5335b72f-3f39-4b75-9757-6ab40e96a18a.png', popular:false },
   { id:'p5', nombre:'Dispensador de agua', volumen:'Accesorio', precio:350,
-    descripcion:'Dispensador base para garrafón 20L. Fío y caliente. Con llave triple.',
-    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_030916_97d100c1-1dd9-42c3-813a-f97243c7fb67.png', popular:false },
+    descripcion:'Dispensador base para garrafón 20L. Frío y caliente. Con llave triple y bandeja extraible. Acero inoxidable.',
+    img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034038_60367273-8d3f-4b40-ae3a-88ebab75c5e1.png', imgCat:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034038_60367273-8d3f-4b40-ae3a-88ebab75c5e1.png', popular:false },
+]
+
+export const CATS = [
+  { label:'Garrafón 20L', sub:'Desde $30',   img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034037_5335b72f-3f39-4b75-9757-6ab40e96a18a.png',  href:'/catalogo?cat=garafon' },
+  { label:'Pack familiar',  sub:'Desde $135',  img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034037_e4700287-8921-4692-b9e0-9b778e20fe31.png', href:'/catalogo?cat=pack' },
+  { label:'Botella 1.5L',   sub:'Desde $12',   img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034038_350f1382-22dc-4df3-b9be-2f8950d032aa.png',  href:'/catalogo?cat=botella' },
+  { label:'Dispensador',    sub:'Desde $350',  img:'https://d8j0ntlcm91z4.cloudfront.net/user_3DDb66hXpSaWG4DmoX3Ae5V2dqt/hf_20260615_034038_60367273-8d3f-4b40-ae3a-88ebab75c5e1.png', href:'/catalogo?cat=accesorio' },
 ]
 
 export const PEDIDOS: Pedido[] = [
@@ -40,7 +47,7 @@ export const PEDIDOS: Pedido[] = [
   { id:'q2', cliente:'Roberto Solis', direccion:'Calle Coral 88, SM 27', productos:'Pack 5 garrafones', total:135, estado:'Pendiente', fecha:'15/06/25', hora:'11:00', repartidor:'Miguel R.', telefono:'+52 998 234 5678' },
   { id:'q3', cliente:'Ana Torres', direccion:'Blvd. Kukulcán Km 9', productos:'1x Garrafón 20L, 4x Botella 1.5L', total:78, estado:'Entregado', fecha:'15/06/25', hora:'09:15', repartidor:'Carlos M.', telefono:'+52 998 345 6789' },
   { id:'q4', cliente:'Hotel Mar Azul', direccion:'Zona Hotelera Km 14', productos:'10x Garrafón 20L', total:300, estado:'Entregado', fecha:'15/06/25', hora:'08:00', repartidor:'Miguel R.', telefono:'+52 998 456 7890' },
-  { id:'q5', cliente:'Farmacia San Pablo', direccion:'Av. LázaroCárdenas 45', productos:'Pack 5 garrafones', total:135, estado:'Pendiente', fecha:'15/06/25', hora:'12:00', repartidor:'Sin asignar', telefono:'+52 998 567 8901' },
+  { id:'q5', cliente:'Farmacia San Pablo', direccion:'Av. Lázaro Cárdenas 45', productos:'Pack 5 garrafones', total:135, estado:'Pendiente', fecha:'15/06/25', hora:'12:00', repartidor:'Sin asignar', telefono:'+52 998 567 8901' },
   { id:'q6', cliente:'Claudia Mendez', direccion:'Sm 64 Mz 12 Lt 3', productos:'1x Dispensador, 2x Garrafón', total:410, estado:'En camino', fecha:'15/06/25', hora:'11:45', repartidor:'Carlos M.', telefono:'+52 998 678 9012' },
 ]
 
@@ -58,8 +65,8 @@ export const REPARTIDORES: Repartidor[] = [
 ]
 
 export const KPI = {
-  pedidosHoy: 12, entregados: 9, pendientes: 3, ingresoHoy: 2340,
-  clientesActivos: 48, garrafonesSemana: 210,
+  pedidosHoy:12, entregados:9, pendientes:3, ingresoHoy:2340,
+  clientesActivos:48, garrafonesSemana:210,
 }
 
 export const CHART_SEMANA = [
